@@ -102,7 +102,7 @@ public class AlimentiConfig {
         return new Menu(pizzaList,toppingsList,bevandaList);
     }
 
-    @Bean
+    @Bean(name = "tavolo1")
     public Tavolo tavolo1(){
         return new Tavolo(1,4);
     }

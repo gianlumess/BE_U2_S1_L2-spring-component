@@ -13,13 +13,13 @@ public class BeU2S1L2Application {
 		SpringApplication.run(BeU2S1L2Application.class, args);
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeU2S1L2Application.class);
 
-		Menu menu=context.getBean(Menu.class);
+		/*Menu menu=context.getBean(Menu.class);
 		Ordine ordine1= (Ordine) context.getBean("ordine1");
 		Ordine ordine2= (Ordine) context.getBean("ordine2");
 		menu.printMenu();
 		System.out.println();
 		System.out.println(ordine1);
-		System.out.println(ordine2);
+		System.out.println(ordine2);*/
 		context.close();
 	}
 
