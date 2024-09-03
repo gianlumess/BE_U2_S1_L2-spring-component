@@ -45,11 +45,5 @@ public class Ordine {
         }
         return tot;
     }
-
-    public LocalDate OraEMinuti(){
-        LocalTime oraCorrente= LocalTime.now();
-
-    }
-
-
+    
 }
