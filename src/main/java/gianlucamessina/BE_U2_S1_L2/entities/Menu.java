@@ -1,8 +1,11 @@
 package gianlucamessina.BE_U2_S1_L2.entities;
 
 
-import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+@Component
 public class Menu {
     private List<Pizza> pizze;
     private List<Topping> toppings;
@@ -16,15 +19,15 @@ public class Menu {
 
     public void printMenu() {
         System.out.println("******* Menu *******");
-        System.out.println("PIZZAS");
+        System.out.println("PIZZE");
         this.pizze.forEach(System.out::println);
         System.out.println();
 
-        System.out.println("TOPPINGS");
+        System.out.println("TOPPING");
         this.toppings.forEach(System.out::println);
         System.out.println();
 
-        System.out.println("DRINKS");
+        System.out.println("BEVANDE");
         this.bevande.forEach(System.out::println);
         System.out.println();
 

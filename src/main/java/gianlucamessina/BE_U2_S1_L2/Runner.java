@@ -26,5 +26,6 @@ public class Runner implements CommandLineRunner {
         menu.printMenu();
         System.out.println();
         System.out.println(ordine);
+
     }
 }

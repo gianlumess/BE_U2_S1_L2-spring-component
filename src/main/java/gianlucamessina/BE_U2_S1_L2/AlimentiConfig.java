@@ -80,27 +80,7 @@ public class AlimentiConfig {
         return new Pizza("San Daniele",toppingList);
     }
 
-    @Bean
-    public Menu menu(){
-        List<Pizza> pizzaList = new ArrayList<>();
-        List<Bevanda> bevandaList = new ArrayList<>();
-        List<Topping> toppingsList = new ArrayList<>();
 
-        pizzaList.add(margherita());
-        pizzaList.add(diavola());
-        pizzaList.add(sanDaniele());
-
-        bevandaList.add(acquaNaturaleBevanda());
-        bevandaList.add(acquaFrizzanteBevanda());
-        bevandaList.add(cocaColaBevanda());
-
-        toppingsList.add(cipollaTopping());
-        toppingsList.add(crudoTopping());
-        toppingsList.add(salamePiccanteTopping());
-        toppingsList.add(burrataTopping());
-
-        return new Menu(pizzaList,toppingsList,bevandaList);
-    }
 
     @Bean(name = "tavolo1")
     public Tavolo tavolo1(){
@@ -153,7 +133,7 @@ public class AlimentiConfig {
         toppingsList.add(burrataTopping());
         toppingsList.add(cipollaTopping());
         toppingsList.add(crudoTopping());
-        tavolo1().setStatoTavolo(StatoTavolo.OCCUPATO);
+        tavolo2().setStatoTavolo(StatoTavolo.OCCUPATO);
         return new Ordine(tavolo2(),2,costoCoperto,pizzaList,bevandaList,toppingsList,4);
     }
 
