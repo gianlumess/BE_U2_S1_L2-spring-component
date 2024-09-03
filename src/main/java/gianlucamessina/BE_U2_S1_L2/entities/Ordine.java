@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 @Getter
 public class Ordine {
+    private Tavolo tavolo;
     private int numeroOrdine;
     private List<Pizza> pizzeOrdinate;
     private List<Bevanda> bevandeOrdinate;
@@ -20,8 +21,10 @@ public class Ordine {
     private double costoCoperto;
     private double costoTotale;
 
-    public Ordine(int numeroOrdine, List<Pizza> pizzeOrdinate, List<Bevanda> bevandeOrdinate, List<Topping> variazioni , int numeroCoperti) {
+    public Ordine(Tavolo tavolo,int numeroOrdine,double costoCoperto, List<Pizza> pizzeOrdinate, List<Bevanda> bevandeOrdinate, List<Topping> variazioni , int numeroCoperti) {
+        this.tavolo=tavolo;
         this.numeroOrdine = numeroOrdine;
+        this.costoCoperto=costoCoperto;
         this.statoOrdine=StatoOrdine.IN_CORSO;
         this.pizzeOrdinate = pizzeOrdinate;
         this.bevandeOrdinate = bevandeOrdinate;
@@ -45,5 +48,20 @@ public class Ordine {
         }
         return tot;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Ordine{" +
+                "tavolo=" + tavolo +
+                ", numeroOrdine=" + numeroOrdine +
+                ", pizzeOrdinate=" + pizzeOrdinate +
+                ", bevandeOrdinate=" + bevandeOrdinate +
+                ", variazioni=" + variazioni +
+                ", statoOrdine=" + statoOrdine +
+                ", numeroCoperti=" + numeroCoperti +
+                ", oraDiAcquisizione='" + oraDiAcquisizione + '\'' +
+                ", costoCoperto=" + costoCoperto +
+                ", costoTotale=" + costoTotale +
+                '}';
+    }
 }

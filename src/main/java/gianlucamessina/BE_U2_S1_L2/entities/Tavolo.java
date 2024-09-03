@@ -8,10 +8,10 @@ public class Tavolo {
         private StatoTavolo statoTavolo;
 
 
-        public Tavolo(int numeroTavolo, int numeroCopertiMassimo, StatoTavolo statoTavolo) {
+        public Tavolo(int numeroTavolo, int numeroCopertiMassimo) {
                 this.numeroTavolo = numeroTavolo;
                 this.numeroCopertiMassimo = numeroCopertiMassimo;
-                this.statoTavolo = statoTavolo;
+                this.statoTavolo = StatoTavolo.LIBERO;
         }
 
         public int getNumeroTavolo() {

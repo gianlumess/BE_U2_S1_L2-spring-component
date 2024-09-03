@@ -1,18 +1,19 @@
 package gianlucamessina.BE_U2_S1_L2;
 
 
-import gianlucamessina.BE_U2_S1_L2.entities.Bevanda;
-import gianlucamessina.BE_U2_S1_L2.entities.Menu;
-import gianlucamessina.BE_U2_S1_L2.entities.Pizza;
-import gianlucamessina.BE_U2_S1_L2.entities.Topping;
+import gianlucamessina.BE_U2_S1_L2.entities.*;
+import gianlucamessina.BE_U2_S1_L2.enums.StatoTavolo;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+@PropertySource("application.properties")
 public class AlimentiConfig {
     @Bean
     public Topping pomodoroTopping(){
@@ -101,5 +102,59 @@ public class AlimentiConfig {
         return new Menu(pizzaList,toppingsList,bevandaList);
     }
 
+    @Bean
+    public Tavolo tavolo1(){
+        return new Tavolo(1,4);
+    }
+
+    @Bean
+    public Tavolo tavolo2(){
+        return new Tavolo(2,6);
+    }
+
+    @Bean
+    public Tavolo tavolo3(){
+        return new Tavolo(3,2);
+    }
+
+    @Bean(name = "ordine1")
+    public Ordine ordine1(@Value("${order.coverCharge}")double costoCoperto){
+        List<Pizza> pizzaList = new ArrayList<>();
+        List<Bevanda> bevandaList = new ArrayList<>();
+        List<Topping> toppingsList = new ArrayList<>();
+
+        pizzaList.add(margherita());
+        pizzaList.add(diavola());
+
+        bevandaList.add(acquaNaturaleBevanda());
+        bevandaList.add(cocaColaBevanda());
+
+        toppingsList.add(burrataTopping());
+        tavolo1().setStatoTavolo(StatoTavolo.OCCUPATO);
+        return new Ordine(tavolo1(),1,costoCoperto,pizzaList,bevandaList,toppingsList,2);
+    }
+
+    @Bean(name = "ordine2")
+    public Ordine ordine2(@Value("${order.coverCharge}")double costoCoperto){
+        List<Pizza> pizzaList = new ArrayList<>();
+        List<Bevanda> bevandaList = new ArrayList<>();
+        List<Topping> toppingsList = new ArrayList<>();
+
+        pizzaList.add(margherita());
+        pizzaList.add(diavola());
+        pizzaList.add(diavola());
+        pizzaList.add(sanDaniele());
+
+        bevandaList.add(acquaNaturaleBevanda());
+        bevandaList.add(acquaFrizzanteBevanda());
+        bevandaList.add(cocaColaBevanda());
+        bevandaList.add(cocaColaBevanda());
+
+        toppingsList.add(burrataTopping());
+        toppingsList.add(cipollaTopping());
+        toppingsList.add(crudoTopping());
+        tavolo1().setStatoTavolo(StatoTavolo.OCCUPATO);
+        return new Ordine(tavolo2(),2,costoCoperto,pizzaList,bevandaList,toppingsList,4);
+    }
 
 }
